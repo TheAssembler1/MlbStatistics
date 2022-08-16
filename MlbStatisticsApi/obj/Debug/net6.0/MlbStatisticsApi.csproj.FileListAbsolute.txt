@@ -28,3 +28,9 @@ C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\obj\Debug\net6.0\ref\
 C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\HtmlAgilityPack.dll
 C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\MLBWebScraper.dll
 C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\MLBWebScraper.pdb
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\System.Web.Cors.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\System.Web.Http.Cors.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

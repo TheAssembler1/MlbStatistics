@@ -51,6 +51,10 @@
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.43, )"
+            },
+            "Microsoft.AspNet.WebApi.Cors": {
+              "target": "Package",
+              "version": "[5.2.9, )"
             }
           },
           "imports": [
@@ -116,6 +120,10 @@
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.43, )"
+            },
+            "Microsoft.AspNet.WebApi.Cors": {
+              "target": "Package",
+              "version": "[5.2.9, )"
             }
           },
           "imports": [

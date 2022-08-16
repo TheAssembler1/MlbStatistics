@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MLBWebScraper;
 
 namespace MlbStatisticsApi.Controllers
 {
+    [EnableCors("React")]
     [ApiController]
     [Route("[controller]/GetAllPlayers")]
     public class MlbStatisticsController : ControllerBase
