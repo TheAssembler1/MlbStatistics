@@ -25,3 +25,6 @@ C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\obj\Debug\net6.0\refi
 C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\obj\Debug\net6.0\MlbStatisticsApi.pdb
 C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\obj\Debug\net6.0\MlbStatisticsApi.genruntimeconfig.cache
 C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\obj\Debug\net6.0\ref\MlbStatisticsApi.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\MLBWebScraper.dll
+C:\Users\lewis\source\repos\MLBStatistics\MlbStatisticsApi\bin\Debug\net6.0\MLBWebScraper.pdb
