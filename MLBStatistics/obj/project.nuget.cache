@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y9QNr/L0pL4ZH2f7AVXtukwhxdx9W/tMCGeNa1RLqoay5JyEzrsFwd5VZEmCKlhNQJy3RIQtJ5ePNsGTx7dSww==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\MLBStatistics\\MLBStatistics.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lewis\\.nuget\\packages\\htmlagilitypack\\1.11.43\\htmlagilitypack.1.11.43.nupkg.sha512"
+  ],
+  "logs": []
+}

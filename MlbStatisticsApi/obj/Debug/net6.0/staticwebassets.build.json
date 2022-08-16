@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "EAf0IsKubaDeYNctGLa1wFqkOJN6ZZ2hpLt8LfuZ3D4=",
+  "Source": "MlbStatisticsApi",
+  "BasePath": "_content/MlbStatisticsApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
