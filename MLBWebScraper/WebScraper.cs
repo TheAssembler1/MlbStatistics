@@ -10,7 +10,7 @@ namespace MLBWebScraper
         private static readonly HttpClient httpClient = new();
         private static readonly string TEMP_ROUTE = "https://www.baseball-reference.com";
 
-        private static async Task<String> GetHtmlStringAsync(string uri) 
+        private static async Task<String> GetHtmlStringAsync(string uri)
         {
             string htmlText = string.Empty;
 
@@ -19,7 +19,7 @@ namespace MLBWebScraper
                 Console.WriteLine("sucessfully obtained html text");
                 htmlText = await httpClient.GetStringAsync(uri);
             }
-            catch(HttpRequestException e)
+            catch (HttpRequestException e)
             {
                 Console.WriteLine("failed to obtain html text");
                 Console.WriteLine($"{e.Message}");
@@ -51,7 +51,7 @@ namespace MLBWebScraper
             return list;
         }
 
-        public static async Task<List<string>> GetResultFromUri(string routePrefix)
+        public static async Task<List<string>> GetResultFromUri(string routePrefix, string selector)
         {
             List<string> result = new List<string>();
 
@@ -95,7 +95,29 @@ namespace MLBWebScraper
             for (int i = 0; i < letters.Length; i++)
             {
                 string routePrefix = "/players/" + letters[i];
-                List<String> list = await WebScraper.GetResultFromUri(routePrefix);
+                List<string> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                result.Add(list);
+            }
+
+            return result;
+        }
+
+        public static async Task<List<List<string>>> GetAllPlayersUris()
+        {
+            List<List<string>> result = new List<List<string>>();
+            string letters = "abcdefghijklmnopqrstuvwxyz";
+
+            for(int i = 0; i < letters.Length; i++)
+            {
+                string routePrefix = "/players/" + letters[i];
+
+                //need a parameter to filter through the html code here
+                List<string> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a/");
+
+                //need to somehone get the href of each node here
+                //foreach(string node in list)
+                //    node.
+
                 result.Add(list);
             }
 
