@@ -19,6 +19,10 @@ namespace MlbStatisticsApi.Controllers
                 foreach (var player in item)
                     Console.WriteLine(player);
             }
+                
+            //FIXME::not sure if this works
+            if (list.Count <= 0)
+                NotFound();
 
             return list;
         }
