@@ -17,3 +17,9 @@ C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\MLBWebS
 C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\MLBWebScraper.pdb
 C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\obj\Debug\net6.0\MLBStatistics.csproj.CopyComplete
 C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\HtmlAgilityPack.dll
+C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\System.Web.Cors.dll
+C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\System.Web.Http.Cors.dll
+C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\lewis\source\repos\MLBStatistics\MLBStatistics\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

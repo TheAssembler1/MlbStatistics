@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using MLBWebScraper;
 
-namespace MlbStatisticsApi.Controllers
+namespace AllPlayers.Controllers
 {
+    [Route("[controller]/AllPlayers")]
     [EnableCors("React")]
     [ApiController]
-    [Route("[controller]/GetAllPlayers")]
-    public class MlbStatisticsController : ControllerBase
+    public class AllPlayers : ControllerBase
     {
         [HttpGet(Name = "GetAllPlayers")]
         public async Task<List<List<string>>> GetAllPlayers()

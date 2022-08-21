@@ -28,9 +28,9 @@ namespace MLBWebScraper
             return htmlText;
         }
 
-        private static List<string> ParseHtml(string htmlText, string id, string selector)
+        private static List<HtmlNode> ParseHtml(string htmlText, string id, string selector)
         {
-            List<string> list = new();
+            List<HtmlNode> list = new();
 
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(htmlText);
@@ -45,15 +45,15 @@ namespace MLBWebScraper
             {
                 Console.WriteLine("successfully found nodes with given selector");
                 foreach (var node in currentPlayerNodes)
-                    list.Add(node.InnerHtml);
+                    list.Add(node);
             }
 
             return list;
         }
 
-        public static async Task<List<string>> GetResultFromUri(string routePrefix, string selector)
+        public static async Task<List<HtmlNode>> GetResultFromUri(string routePrefix, string selector)
         {
-            List<string> result = new List<string>();
+            List<HtmlNode> resultNodes = new List<HtmlNode>();
 
             //checking if user has request /players url
             if (routePrefix.StartsWith("/players/"))
@@ -62,19 +62,18 @@ namespace MLBWebScraper
 
                 string route = TEMP_ROUTE + routePrefix;
                 string id = "div_players_";
-                string selector = "//p/b/a";
 
                 Console.WriteLine($"final route {route}");
 
                 string htmlText = await GetHtmlStringAsync(route);
-                result = ParseHtml(htmlText, id, selector);
+                resultNodes = ParseHtml(htmlText, id, selector);
 
                 Console.WriteLine($"route: {route}");
 
-                if (result == null)
+                if (resultNodes == null)
                 {
                     Console.WriteLine("failed to instantiate result of route prefix");
-                    return new List<string>();
+                    return new List<HtmlNode>();
                 }
                 else
                     Console.WriteLine("successfully instantiated result of route previx");
@@ -84,7 +83,7 @@ namespace MLBWebScraper
                 Console.WriteLine("failed to find route for route prefix");
             }
 
-            return result;
+            return resultNodes;
         }
 
         public static async Task<List<List<string>>> GetAllPlayers()
@@ -95,8 +94,13 @@ namespace MLBWebScraper
             for (int i = 0; i < letters.Length; i++)
             {
                 string routePrefix = "/players/" + letters[i];
-                List<string> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
-                result.Add(list);
+                List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                List<string> currentStringList = new List<string>();
+
+                foreach (var node in list)
+                    currentStringList.Add(node.InnerHtml);
+
+                result.Add(currentStringList);
             }
 
             return result;
@@ -107,18 +111,19 @@ namespace MLBWebScraper
             List<List<string>> result = new List<List<string>>();
             string letters = "abcdefghijklmnopqrstuvwxyz";
 
-            for(int i = 0; i < letters.Length; i++)
+            for (int i = 0; i < letters.Length; i++)
             {
                 string routePrefix = "/players/" + letters[i];
 
                 //need a parameter to filter through the html code here
-                List<string> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a/");
+                Console.WriteLine(routePrefix);
+                List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                List<string> currentListString = new List<string>();
 
-                //need to somehone get the href of each node here
-                //foreach(string node in list)
-                //    node.
+                foreach (var node in list)
+                    currentListString.Add(node.Attributes["href"].Value);
 
-                result.Add(list);
+                result.Add(currentListString); 
             }
 
             return result;
