@@ -14,17 +14,6 @@ namespace Players.Controllers
         public async Task<List<List<string>>> GetAllPlayersUris()
         {
             List<List<string>> list = await WebScraper.GetAllPlayersUris();
-
-            foreach(var item in list)
-            {
-                foreach(var playerUri in item)
-                    Console.WriteLine(playerUri);
-            }
-
-            //FIXME::not sure if this works
-            if (list.Count <= 0)
-                NotFound();
-
             return list;
         }
 
@@ -33,22 +22,9 @@ namespace Players.Controllers
         public async Task<List<List<string>>> GetAllPlayers()
         {
             List<List<string>> list = await WebScraper.GetAllPlayers();
-
-            foreach (var item in list)
-            {
-                foreach (var player in item)
-                    Console.WriteLine(player);
-            }
-                
-            //FIXME::not sure if this works
-            if (list.Count <= 0)
-                NotFound();
-
             return list;
         }
 
-
-        //TODO::implement this to fetch all the players with a given letter.
         [HttpGet("{letter}")]
         public async Task<List<string>> GetAllPlayersWithLetter(char letter)
         {
