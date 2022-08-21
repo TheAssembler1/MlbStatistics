@@ -128,5 +128,40 @@ namespace MLBWebScraper
 
             return result;
         }
+
+        public static async Task<List<List<PlayerNameUri>>> GetAllPlayersNameUri()
+        {
+            List<List<PlayerNameUri>> result = new List<List<PlayerNameUri>>();
+            string letters = "abcdefghijklmnopqrstuvwxyz";
+
+            for(int i = 0; i < letters.Length; i++)
+            {
+                string routePrefix = "/players/" + letters[i];
+                List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                List<PlayerNameUri> currentListPlayerNameUri = new List<PlayerNameUri>();
+
+                foreach (var node in list)
+                    currentListPlayerNameUri.Add(new PlayerNameUri(node.InnerHtml, node.Attributes["href"].Value));
+
+                result.Add(currentListPlayerNameUri);
+            }
+
+            return result;
+        }
+
+        public static async Task<List<string>> GetAllPlayersWithLetter(char letter)
+        {
+            List<string> result = new List<string>();
+
+            string routePrefix = "/players/" + letter;
+
+            Console.WriteLine(routePrefix);
+            List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p//b/a");
+
+            foreach (var node in list)
+                result.Add(node.InnerHtml);
+
+            return result;
+        }
     }
 }
