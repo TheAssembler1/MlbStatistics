@@ -1,23 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+class PlayerLetters extends React.Component{
+  state = {
+    results: []
+  };
+
+  render(){
+    let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    let currentKey = 0;
+
+    return (
+      letters.map((value: string) =>
+        <div key={currentKey++} className='Button-Link'>
+
+          <button onClick={() =>{
+            fetch('https://localhost:7287/Players/' + value.toLowerCase())
+              .then(response => response.json())
+              .then(data => this.setState({results: data}));
+          }}>{value}</button>
+
+          <span>{this.state.results}</span>
+        </div>
+      )
+    );
+  }
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <PlayerLetters />
       </header>
     </div>
   );
