@@ -17,6 +17,14 @@ namespace Players.Controllers
             return list;
         }
 
+        //NOTE::the player name should be the url stored with the player use PlayerNameUri
+        [HttpGet("Names/year/{playerName}")]
+        public List<string> GetAllPlayersWithNameWithYear(string playerName)
+        {
+            List<string> list = new List<string>();
+            return list;
+        }
+
 
         [HttpGet("Names")]
         public async Task<List<List<string>>> GetAllPlayers()

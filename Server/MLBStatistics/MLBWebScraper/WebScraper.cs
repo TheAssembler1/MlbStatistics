@@ -51,7 +51,7 @@ namespace MLBWebScraper
             return list;
         }
 
-        public static async Task<List<HtmlNode>> GetResultFromUri(string routePrefix, string selector)
+        public static async Task<List<HtmlNode>> GetResultFromUri(string id, string routePrefix, string selector)
         {
             List<HtmlNode> resultNodes = new List<HtmlNode>();
 
@@ -61,7 +61,6 @@ namespace MLBWebScraper
                 Console.WriteLine("successful in finding route for route prefix");
 
                 string route = TEMP_ROUTE + routePrefix;
-                string id = "div_players_";
 
                 Console.WriteLine($"final route {route}");
 
@@ -94,7 +93,7 @@ namespace MLBWebScraper
             for (int i = 0; i < letters.Length; i++)
             {
                 string routePrefix = "/players/" + letters[i];
-                List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "//p/b/a");
                 List<string> currentStringList = new List<string>();
 
                 foreach (var node in list)
@@ -117,7 +116,7 @@ namespace MLBWebScraper
 
                 //need a parameter to filter through the html code here
                 Console.WriteLine(routePrefix);
-                List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "//p/b/a");
                 List<string> currentListString = new List<string>();
 
                 foreach (var node in list)
@@ -137,7 +136,7 @@ namespace MLBWebScraper
             for(int i = 0; i < letters.Length; i++)
             {
                 string routePrefix = "/players/" + letters[i];
-                List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+                List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "//p/b/a");
                 List<PlayerNameUri> currentListPlayerNameUri = new List<PlayerNameUri>();
 
                 foreach (var node in list)
@@ -156,7 +155,7 @@ namespace MLBWebScraper
             string routePrefix = "/players/" + letter;
 
             Console.WriteLine(routePrefix);
-            List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p/b/a");
+            List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "//p/b/a");
 
             foreach (var node in list)
                 result.Add(new PlayerNameUri(node.InnerHtml, node.Attributes["href"].Value));
@@ -171,7 +170,7 @@ namespace MLBWebScraper
             string routePrefix = "/players/" + letter;
 
             Console.WriteLine(routePrefix);
-            List<HtmlNode> list = await WebScraper.GetResultFromUri(routePrefix, "//p//b/a");
+            List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "//p//b/a");
 
             foreach (var node in list)
                 result.Add(node.InnerHtml);
