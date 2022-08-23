@@ -36,20 +36,21 @@ namespace Players.Controllers
         }
 
         [HttpGet("NamesUris")]
-        public async Task<List<string>> GetAllPlayersNameUri()
+        public async Task<List<List<PlayerNameUri>>> GetAllPlayersNameUri()
         {
             List<List<PlayerNameUri>> list = await WebScraper.GetAllPlayersNameUri();
-            List<string> result = new List<string>();
+            return list;
+        }
 
-            foreach (var item in list) {
-               foreach(var playerNameUri in item)
-                {
-                    result.Add(playerNameUri._name);
-                    result.Add(playerNameUri._uri);
-                }
-            }
+        [HttpGet("NamesUris/{letter}")]
+        public async Task<List<PlayerNameUri>> GetAllPlayersNameWithLetterNameUri(char letter)
+        {
+            List<PlayerNameUri> list = await WebScraper.GetAllPlayersWithLetterNameUri(letter);
 
-            return result;
+            if (letter > 'z' || letter < 'a')
+                return await Task.FromResult(new List<PlayerNameUri>());
+
+            return list;
         }
     }
 }
