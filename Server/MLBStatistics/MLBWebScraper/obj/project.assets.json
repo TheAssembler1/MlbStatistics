@@ -5555,23 +5555,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lewis\\.nuget\\packages\\": {},
+    "C:\\Users\\TheAssembler1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj",
+      "projectUniqueName": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj",
       "projectName": "MLBWebScraper",
-      "projectPath": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj",
-      "packagesPath": "C:\\Users\\lewis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MLBWebScraper\\obj\\",
+      "projectPath": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj",
+      "packagesPath": "C:\\Users\\TheAssembler1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MLBWebScraper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lewis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TheAssembler1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

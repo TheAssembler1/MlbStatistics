@@ -5787,23 +5787,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lewis\\.nuget\\packages\\": {},
+    "C:\\Users\\TheAssembler1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MlbStatisticsApi\\MlbStatisticsApi.csproj",
+      "projectUniqueName": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MlbStatisticsApi\\MlbStatisticsApi.csproj",
       "projectName": "MlbStatisticsApi",
-      "projectPath": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MlbStatisticsApi\\MlbStatisticsApi.csproj",
-      "packagesPath": "C:\\Users\\lewis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MlbStatisticsApi\\obj\\",
+      "projectPath": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MlbStatisticsApi\\MlbStatisticsApi.csproj",
+      "packagesPath": "C:\\Users\\TheAssembler1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MlbStatisticsApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lewis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TheAssembler1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5818,8 +5818,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj": {
-              "projectPath": "C:\\Users\\lewis\\source\\repos\\MLBStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj"
+            "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj": {
+              "projectPath": "C:\\Users\\TheAssembler1\\Documents\\Src\\MlbStatistics\\Server\\MLBStatistics\\MLBWebScraper\\MLBWebScraper.csproj"
             }
           }
         }

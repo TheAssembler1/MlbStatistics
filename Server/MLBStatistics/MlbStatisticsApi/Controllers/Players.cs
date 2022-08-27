@@ -18,10 +18,14 @@ namespace Players.Controllers
         }
 
         //NOTE::the player name should be the url stored with the player use PlayerNameUri
-        [HttpGet("Names/year/{playerName}")]
-        public List<string> GetAllPlayersWithNameWithYear(string playerName)
+        [HttpGet("Names/Years/{letter}/{playerUri}")]
+        public async Task<List<string>> GetAllPlayersWithNameWithYear(string letter, string playerUri)
         {
-            List<string> list = new List<string>();
+            List<string> list = await WebScraper.GetAllPlayersWithUriYears(letter, playerUri);
+
+            if (list.Count == 0)
+                list.Add("Nothing in list");
+
             return list;
         }
 

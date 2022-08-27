@@ -55,32 +55,26 @@ namespace MLBWebScraper
         {
             List<HtmlNode> resultNodes = new List<HtmlNode>();
 
-            //checking if user has request /players url
-            if (routePrefix.StartsWith("/players/"))
+            Console.WriteLine("successful in finding route for route prefix");
+
+            string route = TEMP_ROUTE + routePrefix;
+
+            Console.WriteLine($"final route {route}");
+
+            string htmlText = await GetHtmlStringAsync(route);
+            resultNodes = ParseHtml(htmlText, id, selector);
+
+            Console.WriteLine($"route: {route}");
+
+            Console.WriteLine($"Total nodes found: {resultNodes.Count}");
+
+            if (resultNodes == null)
             {
-                Console.WriteLine("successful in finding route for route prefix");
-
-                string route = TEMP_ROUTE + routePrefix;
-
-                Console.WriteLine($"final route {route}");
-
-                string htmlText = await GetHtmlStringAsync(route);
-                resultNodes = ParseHtml(htmlText, id, selector);
-
-                Console.WriteLine($"route: {route}");
-
-                if (resultNodes == null)
-                {
-                    Console.WriteLine("failed to instantiate result of route prefix");
-                    return new List<HtmlNode>();
-                }
-                else
-                    Console.WriteLine("successfully instantiated result of route previx");
+                Console.WriteLine("failed to instantiate result of route prefix");
+                return new List<HtmlNode>();
             }
             else
-            {
-                Console.WriteLine("failed to find route for route prefix");
-            }
+                Console.WriteLine("successfully instantiated result of route previx");
 
             return resultNodes;
         }
@@ -155,10 +149,31 @@ namespace MLBWebScraper
             string routePrefix = "/players/" + letter;
 
             Console.WriteLine(routePrefix);
-            List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "//p/b/a");
+            List<HtmlNode> list = await WebScraper.GetResultFromUri("div_players_", routePrefix, "");
 
             foreach (var node in list)
                 result.Add(new PlayerNameUri(node.InnerHtml, node.Attributes["href"].Value));
+
+            return result;
+        }
+
+        //NOTE::This only gets they major years not minor
+        public static async Task<List<string>> GetAllPlayersWithUriYears(string letter, string uri)
+        {
+            List<string> result = new List<string>();
+
+            string routePrefix = $"/players/{letter}/{uri}";
+
+            Console.WriteLine(routePrefix);
+
+            //FIXME::need to find the correct query here
+            List<HtmlNode> list = await WebScraper.GetResultFromUri("batting_standard", routePrefix, "//tbody//tr//th");
+            list.ForEach((node) => {
+                string temp = node.GetAttributeValue("csk", null);
+
+                if (temp != null)
+                    result.Add(temp);
+            });
 
             return result;
         }
