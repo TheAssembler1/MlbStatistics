@@ -2,6 +2,7 @@
 using System.Net;
 using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
+using System.Web.Http.Results;
 
 //FIXME::as of now this only gets currently players not old players
 
@@ -72,18 +73,13 @@ namespace MLBWebScraper
             Console.WriteLine(selector);
             Console.WriteLine(id);
 
-            var currentPlayerNodes = htmlDoc.GetElementbyId(id).SelectNodes(selector).Where(function);
+            IEnumerable<HtmlNode>? currentPlayerNodes = htmlDoc.GetElementbyId(id)?.SelectNodes(selector)?.Where(function);
 
-            if (currentPlayerNodes == null)
-            {
-                Console.WriteLine("failed to find nodes with given selector");
-            }
-            else
-            {
-                Console.WriteLine("successfully found nodes with given selector");
+            Console.WriteLine("successfully found nodes with given selector");
+
+            if(currentPlayerNodes != null)
                 foreach (var node in currentPlayerNodes)
                     list.Add(node);
-            }
 
             return list;
         }
@@ -293,6 +289,18 @@ namespace MLBWebScraper
                 result.Add(node.InnerHtml);
 
             return result;
+        }
+
+        public static async Task<PlayerStats> GetAllPlayerStats(string letter, string playerUri)
+        {
+            List<List<string>> stats = new List<List<string>>();
+
+            for(int i = 0; i < WebScraper.stats.Count; i++)
+                stats.Add(await WebScraper.GetAllPlayersWithUriStat(letter, playerUri, WebScraper.stats[i]));
+
+            PlayerStats playerStats = new PlayerStats(stats);
+
+            return playerStats;
         }
     }
 }

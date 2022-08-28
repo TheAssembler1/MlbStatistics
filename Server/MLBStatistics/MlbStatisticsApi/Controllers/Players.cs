@@ -51,17 +51,10 @@ namespace Players.Controllers
         }
 
         [HttpGet("Stats/{letter}/{playerUri}")]
-        public async Task<List<List<string>>> GetAllStatsPlayerWithLetter(string letter, string playerUri)
+        public async Task<IActionResult> GetAllStatsPlayerWithLetter(string letter, string playerUri)
         {
-            List<List<string>> result = new List<List<string>>();
-
-            foreach(var stat in WebScraper.stats)
-            {
-                List<string> temp = await WebScraper.GetAllPlayersWithUriStat(letter, playerUri, stat);
-                result.Add(temp);
-            }
-
-            return result;
+            PlayerStats playerStats = await WebScraper.GetAllPlayerStats(letter, playerUri);
+            return Ok(playerStats.getJson());
         }
 
         [HttpGet("NamesUris/{letter}")]
