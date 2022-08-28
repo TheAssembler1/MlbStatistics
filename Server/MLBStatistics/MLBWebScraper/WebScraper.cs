@@ -12,6 +12,38 @@ namespace MLBWebScraper
         private static readonly HttpClient httpClient = new();
         private static readonly string TEMP_ROUTE = "https://www.baseball-reference.com";
 
+        public static List<string> stats = new List<string>
+            {
+                "year_ID",
+                "age",
+                "G",
+                "PA",
+                "AB",
+                "R",
+                "H",
+                "2B",
+                "3B",
+                "HR",
+                "RBI",
+                "SB",
+                "CS",
+                "BB",
+                "SO",
+                "batting_avg",
+                "onbase_perc",
+                "slugging_perc",
+                "onbase_plus_slugging",
+                "onbase_plus_slugging_plus",
+                "TB",
+                "GIDP",
+                "HBP",
+                "SH",
+                "SF",
+                "IBB",
+                "pos_season",
+                "award_summar"
+            };
+
         private static async Task<String> GetHtmlStringAsync(string uri)
         {
             string htmlText = string.Empty;
@@ -36,6 +68,9 @@ namespace MLBWebScraper
 
             var htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(htmlText);
+
+            Console.WriteLine(selector);
+            Console.WriteLine(id);
 
             var currentPlayerNodes = htmlDoc.GetElementbyId(id).SelectNodes(selector).Where(function);
 
@@ -183,46 +218,64 @@ namespace MLBWebScraper
             return result != "minors_table hidden";
         };
 
-        //NOTE::This only gets they major years not minor
-        public static async Task<List<string>> GetAllPlayersWithUriYears(string letter, string uri)
-        {
-            List<string> result = new List<string>();
-
-            string routePrefix = $"/players/{letter}/{uri}";
-
-            Console.WriteLine(routePrefix);
-
-            //FIXME::need to find the correct query here
-            List<HtmlNode> list = await WebScraper.GetResultFromUri("batting_standard", routePrefix, "//tbody//tr//th", testMinorTable);
-
-            list.ForEach((node) =>
-            {
-                //FIXME::for some reason sometimes the years are floats
-                //FIMXE::need to look into this and see what the floats represent
-                //FIXME::possible a break in the season or something?
-                string temp = node.GetAttributeValue("csk", null);
-
-                if(temp != null)
-                    result.Add(temp);
-            });
-
-            return result;
-        }
-
         public static async Task<List<string>> GetAllPlayersWithUriStat(string letter, string uri, string stat)
         {
             List<string> result = new List<string>();
-
             string routePrefix = $"/players/{letter}/{uri}";
             Console.WriteLine(routePrefix);
+            string selector = (stat == "year_ID") ? "//tbody//tr//th" : "//tbody//tr//td";
+            List<HtmlNode> list = await WebScraper.GetResultFromUri("batting_standard", routePrefix, selector, testMinorTable);
 
-            //FIXME::need to find the correct query here
-            List<HtmlNode> list = await WebScraper.GetResultFromUri("batting_standard", routePrefix, "//tbody//tr//td", testMinorTable);
+            switch (stat)
+            {
+                case "year_ID":
+                    list.ForEach((node) =>
+                    {
+                        string temp = node.GetAttributeValue("csk", null);
 
-            list.ForEach((node) => {
-                if (node.GetAttributeValue("data-stat", null) == stat)
-                    result.Add(node.InnerHtml);
-            });
+                        if (temp != null)
+                            result.Add(temp);
+                    });
+                    break;
+                case "age":
+                case "G":
+                case "PA":
+                case "AB":
+                case "R":
+                case "H":
+                case "2B":
+                case "3B":
+                case "HR":
+                case "RBI":
+                case "SB":
+                case "CS":
+                case "BB":
+                case "SO":
+                case "batting_avg":
+                case "onbase_perc":
+                case "slugging_perc":
+                case "onbase_plus_slugging":
+                case "onbase_plug_slugging_plus":
+                case "TB":
+                case "GIDP":
+                case "HBP":
+                case "SH":
+                case "SF":
+                case "IBB":
+                case "pos_season":
+                case "award_summary":
+                    list.ForEach((node) =>
+                    {
+                        bool nodeFound = node.GetAttributeValue("data-stat", null) == stat;
+
+                        if(nodeFound)
+                            result.Add(node.InnerHtml);
+                    });
+                    break;
+                default:
+                    Console.WriteLine("stat does not exist or is not implemented");
+                    break;
+            }
 
             return result;
         }

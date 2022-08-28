@@ -6,18 +6,20 @@ namespace MLBStatistics
     {
         public static async Task Main()
         {
-            List<string> years = await WebScraper.GetAllPlayersWithUriYears("t", "troutmi01.shtml");
-            years.ForEach((str) => Console.WriteLine(str));
+            string playerUri = "troutmi01.shtml";
+            string letter = "t";
 
-            List<string> ages = await WebScraper.GetAllPlayersWithUriStat("t", "troutmi01.shtml", "age");
-            ages.ForEach((str) => Console.WriteLine(str));
+            List<string> stats = WebScraper.stats;
 
-            List<string> ba = await WebScraper.GetAllPlayersWithUriStat("t", "troutmi01.shtml", "batting_avg");
-            ba.ForEach((str) => Console.WriteLine(str));
-
-            Console.WriteLine(years.Count);
-            Console.WriteLine(ages.Count);
-            Console.WriteLine(ba.Count);
+            foreach(string stat in stats)
+            {
+                Console.WriteLine("___________________________________________________________________");
+                Console.WriteLine(stat);
+                List<string> temp = await WebScraper.GetAllPlayersWithUriStat(letter, playerUri, stat);
+                Console.WriteLine($"Length of list is: {temp.Count}");
+                temp.ForEach((item) => Console.WriteLine(item));
+                Console.WriteLine("___________________________________________________________________");
+            }
         }
     }
 }
